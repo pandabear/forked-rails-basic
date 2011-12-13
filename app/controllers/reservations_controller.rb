@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
   
   def create
     @book = Book.find(params[:book_id])
-    @reservation = @book.reservations.new(params[:reservation])
+    @reservation = @book.reservations.build(params[:reservation])
     if @reservation.save
       flash[:notice] = "Book reserved"
       respond_to do |format|

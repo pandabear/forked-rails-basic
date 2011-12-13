@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129152136) do
+ActiveRecord::Schema.define(:version => 20111213145445) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(:version => 20111129152136) do
     t.datetime "updated_at"
     t.string   "isbn"
   end
+
+  create_table "comments", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["book_id"], :name => "index_comments_on_book_id"
 
   create_table "reservations", :force => true do |t|
     t.integer  "book_id"

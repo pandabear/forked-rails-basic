@@ -1,0 +1,36 @@
+<%= form_for [@book, Comment.new] do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+
+    <div class="clearfix">
+      <label>Name:</label>
+      <div class="input">
+        <%= f.text_field :name, class: 'xlarge' %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label>Message:</label>
+      <div class="input">
+        <%= f.text_area :content, class: 'xxlarge' %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Submit", class: 'btn primary' %> or
+      <%= link_to "Cancel", book_path(@book) %>
+    </div>
+
+  </fieldset>
+<% end %>
