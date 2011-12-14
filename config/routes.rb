@@ -4,7 +4,7 @@ Library::Application.routes.draw do
     collection do
       get :search
     end
-    resources :reservations, :only => [:create, :new] do
+    resources :reservations, :only => [:create] do
       member do
         put :free
       end

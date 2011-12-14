@@ -3,9 +3,9 @@
 free:
   book_id: 1
   state: free
-  email: library@eficode.fi
+  user_id: 1
 
 reserved:
   book_id: 1
   state: reserved
-  email: library@eficode.fi
+  user_id: 1

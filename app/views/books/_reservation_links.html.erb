@@ -1,5 +1,7 @@
 <% if reservation %>
-  <%= link_to "Free", free_book_reservation_path(book, reservation), method: :put, class: 'btn' %>
+  <% if reserved_by_current_user(reservation) %>
+    <%= link_to "Free", free_book_reservation_path(book, reservation), method: :put, class: 'btn' %>
+  <% end %>
 <% else %>
-  <%= link_to "Reserve", new_book_reservation_path(book), class: 'btn', remote: true %>
+  <%= link_to "Reserve", book_reservations_path(book), class: 'btn', method: :post, remote: true %>
 <% end %>

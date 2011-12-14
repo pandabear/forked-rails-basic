@@ -24,4 +24,9 @@ class Book < ActiveRecord::Base
     self.where("title LIKE ?", "%#{value}%").order("title asc, created_at desc")
   end
   
+  def rated_by?(user)
+    return true if ratings.where(user_id: user.id).count > 0
+    return false
+  end
+  
 end

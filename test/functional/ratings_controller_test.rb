@@ -2,6 +2,8 @@ require 'test_helper'
 
 class RatingsControllerTest < ActionController::TestCase
   setup do
+    @user = Factory(:user)
+    sign_in_as(@user)
     @book = books(:one)
     @book.save
   end

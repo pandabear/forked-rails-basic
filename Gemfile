@@ -10,6 +10,7 @@ gem 'heroku'
 gem 'execjs'
 gem 'therubyracer'
 gem 'clearance'
+gem 'factory_girl_rails'
 
 # Heroku does not support SQLite, use PostgreSQL instead
 group :production do

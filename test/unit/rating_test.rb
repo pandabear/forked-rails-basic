@@ -2,10 +2,11 @@ require 'test_helper'
 
 class RatingTest < ActiveSupport::TestCase
   setup do
+    @user = Factory(:user)
     @book = books(:one)
     @book.save
     
-    @rating = Rating.new(book: @book)
+    @rating = Rating.new(book: @book, user_id: @user.id)
   end
   
   test "rating is 1 or -1" do
@@ -22,16 +23,16 @@ class RatingTest < ActiveSupport::TestCase
   
   test "plusses" do
     4.times do 
-      Rating.create(book: @book, rating: 1)
+      Rating.create(book: @book, rating: 1, user_id: @user.id)
     end
-    assert_equal @book.ratings.plusses, 4
+    assert_equal @book.ratings.plusses, 1
   end
   
   test "minuses" do
     4.times do 
-      Rating.create(book: @book, rating: -1)
+      Rating.create(book: @book, rating: -1, user_id: @user.id)
     end
-    assert_equal @book.ratings.minuses, 4    
+    assert_equal @book.ratings.minuses, 1   
   end
   
 end

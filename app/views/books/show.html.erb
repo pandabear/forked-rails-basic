@@ -13,9 +13,8 @@
 <p>ISBN: <%= @book.isbn %></p>
 <p><%= @book.description %></p>
 
-<div>
-<%= link_to image_tag("thumb-up.png"), up_vote_path(@book), method: :post, remote: true %>
-<%= link_to image_tag("thumb-down.png"), down_vote_path(@book), method: :post, remote: true %>
+<div id="rating-links">
+  <%= render "ratings/links", book: @book, user: current_user %>
 </div>
 
 <span id="reservation-links">
