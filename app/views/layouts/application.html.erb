@@ -15,11 +15,7 @@
     </div>
   </div>
   <div class="container main">
-    <% flash.each do |name,msg| %>
-      <div class="alert-message <%= bootstrap_alert_class(name) %>">
-        <%= msg %>
-      </div>
-    <% end %>
+    <div id="flash-messages"></div>
     <%= yield %>
   </div>
 </body>

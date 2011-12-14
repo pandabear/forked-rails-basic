@@ -1,5 +1,5 @@
 Library::Application.routes.draw do
-  
+
   resources :books do
     collection do
       get :search
@@ -9,6 +9,7 @@ Library::Application.routes.draw do
         put :free
       end
     end
+    resources :comments, :only => [:create, :new]
   end
   
   match 'site/isbn' => 'site#isbn', :via => [:get, :post], :as => :isbn_validator
