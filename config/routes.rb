@@ -9,7 +9,7 @@ Library::Application.routes.draw do
         put :free
       end
     end
-    resources :comments, :only => [:create, :new]
+    resources :comments, :only => [:create]
   end
   
   match 'site/isbn' => 'site#isbn', :via => [:get, :post], :as => :isbn_validator
