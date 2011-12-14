@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   
   has_many :reservations
+  has_many :ratings
   
   validates :title, :presence => true, :uniqueness => true
   validates :authors, :presence => true

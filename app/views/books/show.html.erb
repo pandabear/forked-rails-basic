@@ -5,8 +5,18 @@
 </div>
 
 <p>by <%= @book.authors %></p>
+
+<div id="rating-status">
+  <%= render "ratings/rating", book: @book %>
+</div>
+
 <p>ISBN: <%= @book.isbn %></p>
 <p><%= @book.description %></p>
+
+<div>
+<%= link_to image_tag("thumb-up.png"), up_vote_path(@book), method: :post, remote: true %>
+<%= link_to image_tag("thumb-down.png"), down_vote_path(@book), method: :post, remote: true %>
+</div>
 
 <span id="reservation-links">
   <%= render partial: "reservation_links", locals: {book: @book, reservation: @book_reservation} %>
