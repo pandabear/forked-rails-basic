@@ -5,6 +5,9 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Heroku needed gems
 gem 'heroku'
 gem 'execjs'

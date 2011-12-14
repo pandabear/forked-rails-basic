@@ -40,6 +40,20 @@
       </div>
     </div>
     
+    <div class="clearfix">
+      <label>Cover image:</label>
+      <div class="input">
+        <% if @book.cover.present? %>
+          <%= image_tag(@book.cover_url, class: 'cover-image') %>
+          <%= f.check_box :remove_cover %> Remove cover
+        <% end %>
+      </div>
+      <div class="input">
+        <%= f.file_field :cover, class: 'xlarge' %>
+        <%= f.hidden_field :cover_cache %>
+      </div>
+    </div>
+    
     <div class="actions">    
       <%= f.submit "Save", class: 'btn primary' %>
       or
