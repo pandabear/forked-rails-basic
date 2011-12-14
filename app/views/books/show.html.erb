@@ -15,17 +15,12 @@
 <%= link_to "Edit", edit_book_path(@book), class: 'btn' %>
 <%= link_to "Delete", book_path, method: :delete, class: 'btn danger' %>
 
-<div id="reservation-form" style="display: none;">
+<div id="reservation-form" style="display: none;"></div>
+
+<div id="comment-form">
+  <%= render partial: "comments/form" %>
 </div>
 
-<% unless @book.comments.blank? %>
-  <h3>Comments</h3>
-  <% @book.comments.order("created_at desc").each do |c| %>
-    <div class="well">
-      <b><%= c.name %></b><br />
-      <%= c.content %><br />
-      <i><%= time_ago_in_words(c.created_at) %> ago</i>
-    </div>
-  <% end %>
-<% end %>
-<%= link_to "New comment", new_book_comment_path(@book.id), class: 'btn' %>
+<div id="comments">
+  <%= render partial: "book_comments" %>
+</div>
