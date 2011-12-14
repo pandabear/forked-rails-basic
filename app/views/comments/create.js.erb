@@ -1,2 +1,7 @@
-$('#comment-form').html("<%=j render partial: "form" %>");
+<% if @comment.errors.empty? %>
+  $('#comment-form').html("<%=j render partial: "form" %>");
+<% end %>
+
 $('#comments').html("<%=j render partial: "books/book_comments" %>");
+$('#flash-messages').html("<%=j render partial: "application/flash_messages" %>");
+$('#comment-errors').html("<%=j render partial: "comment_errors", :locals => { :comment => @comment } %>");

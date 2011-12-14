@@ -14,9 +14,9 @@ class CommentsController < ApplicationController
     @comment = @book.comments.build(params[:comment])
 
     if @comment.save
-      flash[:notice] = "Comment saved"
+      flash.now[:notice] = "Comment saved"
     else
-      flash[:error]  = "Comment couldn't be saved"
+      flash.now[:error]  = "Comment couldn't be saved"
     end
 
     respond_to do |format|
