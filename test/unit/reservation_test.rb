@@ -3,9 +3,10 @@ require 'test_helper'
 class ReservationTest < ActiveSupport::TestCase
   
   setup do
+    @user = Factory(:user)
     @new_reservation = Reservation.new(
       book_id: books(:one).id, 
-      email: 'library@eficode.fi',
+      user_id: @user.id,
       state: 'free'
     )
   end
@@ -29,16 +30,10 @@ class ReservationTest < ActiveSupport::TestCase
     assert @new_reservation.errors[:state].any?
   end
 
-  test "should not save with empty email" do
-    @new_reservation.email = nil
+  test "should not save without user" do
+    @new_reservation.user_id = nil
     assert !@new_reservation.save
-    assert @new_reservation.errors[:email].any?
-  end
-
-  test "should not save with invalid email" do
-    @new_reservation.email = 'invalid@e'
-    assert !@new_reservation.save
-    assert @new_reservation.errors[:email].any?
+    assert @new_reservation.errors[:user_id].any?
   end
   
   test "should not allow reservation if the book already reserved" do

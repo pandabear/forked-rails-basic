@@ -1,0 +1,6 @@
+<% if book.rated_by?(user) %>
+  <p>You have already rated this book.</p>
+<% else %>
+  <%= link_to image_tag("thumb-up.png"), up_vote_path(book), method: :post, remote: true %>
+  <%= link_to image_tag("thumb-down.png"), down_vote_path(book), method: :post, remote: true %>
+<% end %>

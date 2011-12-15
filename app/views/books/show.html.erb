@@ -1,12 +1,21 @@
 <h1><%= @book.title %></h1>
 
 <div id="reservation-status">
-  <%= render partial: "reservation_status", locals: {reservation: @book_reservation} %>
+  <%= render partial: "reservation_status", locals: {reservation: @book_reservation, user: current_user} %>
 </div>
 
 <p>by <%= @book.authors %></p>
+
+<div id="rating-status">
+  <%= render "ratings/rating", book: @book %>
+</div>
+
 <p>ISBN: <%= @book.isbn %></p>
 <p><%= @book.description %></p>
+
+<div id="rating-links">
+  <%= render "ratings/links", book: @book, user: current_user %>
+</div>
 
 <span id="reservation-links">
   <%= render partial: "reservation_links", locals: {book: @book, reservation: @book_reservation} %>

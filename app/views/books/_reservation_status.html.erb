@@ -1,5 +1,11 @@
 <% if reservation %>
-  <span class="label important">Reserved by <%= reservation.email %></span>
+  <span class="label important">Reserved by 
+  <% if signed_in? and reservation.email == user.email %>
+    YOU!
+  <% else %>
+	<%= reservation.email %>
+  <% end %>
+  </span>
 <% else %>
   <span class="label success">Free</span>
 <% end %>

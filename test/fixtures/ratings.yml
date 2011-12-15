@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-free:
+one:
   book_id: 1
-  state: free
-  user_id: 1
+  rating: 1
 
-reserved:
+two:
   book_id: 1
-  state: reserved
-  user_id: 1
+  rating: 1

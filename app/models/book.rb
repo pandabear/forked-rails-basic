@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   
   has_many :reservations
+  has_many :ratings
   
   validates :title, :presence => true, :uniqueness => true
   validates :authors, :presence => true
@@ -32,7 +33,14 @@ class Book < ActiveRecord::Base
     self.where("title LIKE ?", "%#{value}%").order("title asc, created_at desc")
   end
   
+
   def self.latest(updated_at = Time.now.prev_week, limit = 20)
   	self.where("updated_at > ?", updated_at).order("updated_at DESC, title").limit(limit)
   end  
+
+  def rated_by?(user)
+    return true if ratings.where(user_id: user.id).count > 0
+    return false
+  end
+
 end

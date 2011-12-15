@@ -8,4 +8,12 @@ module BooksHelper
     content_tag(:span, raw(output))
   end
   
+  def up_vote_path(book)
+    return book_ratings_path(book, rating: {rating: 1})    
+  end
+  
+  def down_vote_path(book)
+    return book_ratings_path(book, rating: {rating: -1})
+  end
+  
 end

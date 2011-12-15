@@ -2,6 +2,10 @@ require 'test_helper'
 
 class BooksControllerTest < ActionController::TestCase
 
+  setup do
+    sign_in_as(Factory(:user))
+  end
+
   test "book listing" do
     get :index
     assert_response :success

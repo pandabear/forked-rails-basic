@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
   
   def create
     @book = Book.find(params[:book_id])
-    @reservation = @book.reservations.new(params[:reservation])
+    @reservation = @book.reservations.new(user_id: current_user.id)
     if @reservation.save
       flash[:notice] = "Book reserved"
       respond_to do |format|
@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
   def free
     @book = Book.find(params[:book_id])
     @reservation = @book.reservations.find(params[:id])
-    if @reservation.free
+    if @reservation.free(current_user)
       flash[:notice] = "Book is no longer reserved"
     else
       flash[:error]  = "Something went wrong"
