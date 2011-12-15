@@ -3,7 +3,10 @@ class BooksController < ApplicationController
   def index
     respond_to do |format|
       format.atom { @books = Book.order('created_at DESC') }
-      format.html { @books = Book.all }
+      format.html do 
+      	@books = Book.latest
+      	@popular_books = Book.popular.all
+      end
       format.xml  { render xml: Book.all }
       format.json { render json: Book.all }
     end
@@ -16,7 +19,12 @@ class BooksController < ApplicationController
       else                Book.search_by_title(params[:query])
     end
     
-    render :action => :index
+    respond_to do |format|
+      format.atom { render :index }
+      format.html
+      format.xml { render xml: @books }
+      format.json { render json: @books }
+    end
   end
   
   def show
@@ -58,6 +66,4 @@ class BooksController < ApplicationController
     flash[:notice] = "Book deleted"
     redirect_to books_path
   end
-  
-  
 end
