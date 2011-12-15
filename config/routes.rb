@@ -10,6 +10,7 @@ Library::Application.routes.draw do
       end
     end
     resources :ratings, :only => [:create]
+    resources :comments, :only => [:create]
   end
   
   match 'site/isbn' => 'site#isbn', :via => [:get, :post], :as => :isbn_validator

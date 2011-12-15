@@ -31,6 +31,7 @@ class ReservationsController < ApplicationController
     else
       flash[:error]  = "Something went wrong"
     end
+
     redirect_to book_path(@book)
   end
   

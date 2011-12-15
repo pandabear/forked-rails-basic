@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20111214130327) do
     t.string   "isbn"
   end
 
+  create_table "comments", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["book_id"], :name => "index_comments_on_book_id"
+
   create_table "ratings", :force => true do |t|
     t.integer  "book_id"
     t.integer  "rating"

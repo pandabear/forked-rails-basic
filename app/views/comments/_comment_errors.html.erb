@@ -1,0 +1,9 @@
+<% unless comment.errors.empty? %>
+  <div class="alert-message block-message error">
+    <ul>
+      <% comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

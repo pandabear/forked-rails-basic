@@ -1,0 +1,10 @@
+<% unless @book.comments.blank? %>
+  <h3>Comments</h3>
+  <% @book.comments.order("created_at desc").each do |c| %>
+    <div class="well">
+      <b><%= c.name %></b><br />
+      <%= c.content %><br />
+      <i><%= time_ago_in_words(c.created_at) %> ago</i>
+    </div>
+  <% end %>
+<% end %>
