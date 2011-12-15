@@ -2,20 +2,17 @@ require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
   setup do
-    @comment = comments(:one)
+    @user = Factory(:user)
+    sign_in_as(@user)
+    @book = books(:one)
   end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
+  
   test "should create comment" do
     assert_difference('Comment.count') do
-      post :create, comment: @comment.attributes
+      post :create, book_id: @book.id, 
+            comment: {name: 'Test', content: 'Test'}, format: 'js'
     end
-
-    assert_redirected_to comment_path(assigns(:comment))
+    assert_response :success
   end
 
 end

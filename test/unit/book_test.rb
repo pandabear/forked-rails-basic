@@ -5,6 +5,7 @@ class BookTest < ActiveSupport::TestCase
   setup do
     @book     = books(:one)
     @new_book = Book.new(@book.attributes.merge({:title => 'New'}))
+    @user     = Factory(:user)
   end
 
   test "should save valid book" do
@@ -42,9 +43,9 @@ class BookTest < ActiveSupport::TestCase
   
   test "popular books" do
     # Add two reservations to ruby book 1 and one reservation to book 2
-    books(:ruby).reservations.create(email: 'library@eficode.fi').free
-    books(:steppenwolf).reservations.create(email: 'library@eficode.fi')
-    books(:ruby).reservations.create(email: 'library@eficode.fi')
+    books(:ruby).reservations.create(user: @user).free(@user)
+    books(:steppenwolf).reservations.create(user: @user)
+    books(:ruby).reservations.create(user: @user)
     
     popular_books = Book.popular(2).all
 
