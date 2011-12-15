@@ -9,6 +9,8 @@ class Book < ActiveRecord::Base
 
   validates_with IsbnValidator
   
+  mount_uploader :cover, CoverUploader
+  
   def reserved
     self.reservations.where(state: 'reserved').first
   end
@@ -45,3 +47,4 @@ class Book < ActiveRecord::Base
   end
 
 end
+

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20111214130327) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "isbn"
+    t.string   "cover"
   end
 
   create_table "comments", :force => true do |t|
