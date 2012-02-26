@@ -1,0 +1,7 @@
+<%= form_for @book.ratings.new, url: rate_book_path(@book) do |f| %>
+  <div>
+    <%= star_rating_radio_tag(f, :rate, @book.overall_rate) %><br />
+    <%= f.text_field :email %><br />
+    <%= f.submit "Rate" %>
+  </div>
+<% end%>

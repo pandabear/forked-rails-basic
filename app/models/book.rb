@@ -6,6 +6,7 @@ class Book < ActiveRecord::Base
   validates_with IsbnValidator
   
   has_many :reservations
+  has_many :ratings
   
   def reservation
     self.reservations.where(state: 'reserved').first
@@ -25,6 +26,17 @@ class Book < ActiveRecord::Base
          "title asc, created_at desc")
   end
 
+  def overall_rate
+    ratings = Rating.where(book_id: self.id)
+    total_rate = 0.0
 
-  
+    if ratings.size > 0
+      ratings.each do |rating|
+        total_rate += rating.rate
+      end
+      total_rate = total_rate / ratings.count
+    end
+
+    total_rate
+  end
 end

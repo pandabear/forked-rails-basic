@@ -1,5 +1,5 @@
 Library::Application.routes.draw do
-  
+
   resources :books do
     collection do
       get :search
@@ -8,6 +8,10 @@ Library::Application.routes.draw do
       member do
         put :free
       end
+    end
+    
+    member do
+      post "rate" => "ratings#rate"
     end
   end
   

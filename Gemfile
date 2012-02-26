@@ -1,15 +1,20 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-
+gem "koala"
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 # Heroku needed gems
 gem 'heroku'
 gem 'execjs'
-gem 'therubyracer'
-
+#gem 'therubyracer' #REMEMBER TO UNCOMMENT THIS LINE BEFORE PUSHING BACK TO REPO.
+#These gems are just for my own convenience.
+group :test do
+  # Pretty printed test output
+  gem 'turn', :require => false
+  gem "minitest"
+end
 # Heroku does not support SQLite, use PostgreSQL instead
 group :production do
   gem 'pg'
