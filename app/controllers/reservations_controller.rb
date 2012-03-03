@@ -3,6 +3,10 @@ class ReservationsController < ApplicationController
   def new
     @book = Book.find(params[:book_id])
     @reservation = @book.reservations.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def create
@@ -10,7 +14,10 @@ class ReservationsController < ApplicationController
     @reservation = @book.reservations.new(params[:reservation])
     if @reservation.save
       flash[:notice] = "Book reserved"
-      redirect_to book_path(@book)
+      respond_to do |format|
+        format.html { redirect_to book_path(@book) }
+        format.js
+      end
     else
       render :new
     end
