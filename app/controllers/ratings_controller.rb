@@ -19,7 +19,10 @@ class RatingsController < ApplicationController
     else
       flash[:error] = "Your rating was not saved due to invalid data."
     end
-    render "books/show"
+    respond_to do |format|
+      format.html { render "books/show" }
+      format.js { render "star_rate"}      
+    end
   end
 
   private

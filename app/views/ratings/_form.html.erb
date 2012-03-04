@@ -1,7 +1,29 @@
-<%= form_for @book.ratings.new, url: rate_book_path(@book) do |f| %>
+<%= form_for book.ratings.new, url: rate_book_path(book), remote: remote do |f| %>
   <div>
-    <%= star_rating_radio_tag(f, :rate, @book.overall_rate) %><br />
-    <%= f.text_field :email %><br />
-    <%= f.submit "Rate" %>
+    <%= star_rating_radio_tag(f, :rate, book.overall_rate) %> 
+    &nbsp;(Score <%= book.overall_rate %> from <%= book.ratings.count %> vote(s))<br />
+    <div id="rating-email-submit">
+      <fieldset>
+        <div class='control-group'>
+          <label class='control-label' for="title">Your email: </label>
+          <div class='controls'>
+            <%= f.text_field :email %>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+          <div class='controls'>
+            <%= f.submit "Rate" %>
+          </div>
+      </fieldset>
+    </div>
   </div>
 <% end%>
+<script type="text/javascript">
+  $('.auto-submit-star').rating({
+    callback: function(value, link){
+      $('#rating-email-submit').slideDown();
+    }
+  });
+  $('#rating-email-submit').hide();
+</script>

@@ -1,7 +1,7 @@
 <h1><%= @book.title %></h1>
 
 <div id="reservation-status">
-  <%= render partial: "reservation_status", locals: {reservation: @book_reservation} %>
+  <%= render partial: "books/reservation_status", locals: {reservation: @book_reservation} %>
 </div>
 
 <p>
@@ -16,15 +16,14 @@
 	<%= @book.description %>
 </p>
 
-<p>
-  <strong>User rating:</strong> <%= @book.overall_rate %>
-  <%= render partial: "ratings/form" %>
-</p>
+<div id="book-rating">
+  <%= render partial: "books/book_rate.html.erb", locals: { remote: true, book: @book }%>
+</div>
 
 <%= link_to "Edit", edit_book_path(@book), class: 'btn' %>
 
 <span id="reservation-links">
-  <%= render partial: "reservation_links", locals: {book: @book, reservation: @book_reservation} %>
+  <%= render partial: "books/reservation_links", locals: {book: @book, reservation: @book_reservation} %>
 </span>
 
 <%= link_to "Delete", book_path, method: :delete, class: 'btn btn-danger' %>

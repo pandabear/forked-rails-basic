@@ -55,7 +55,7 @@ class RatingTest < ActiveSupport::TestCase
     copied_rating = @rating.dup
     copied_rating.rate = 10
     copied_rating.email = "v@lid.com"
-    overall_rate = (@rating.rate + copied_rating.rate) / 2
+    overall_rate = (@rating.rate + copied_rating.rate + 0.0) / 2
     assert @rating.save
     assert copied_rating.save
     assert_equal overall_rate, @book.overall_rate
