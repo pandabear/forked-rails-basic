@@ -8,7 +8,7 @@ gem "koala"
 # Heroku needed gems
 gem 'heroku'
 gem 'execjs'
-#gem 'therubyracer' #REMEMBER TO UNCOMMENT THIS LINE BEFORE PUSHING BACK TO REPO.
+gem 'therubyracer' #REMEMBER TO UNCOMMENT THIS LINE BEFORE PUSHING BACK TO REPO.
 #These gems are just for my own convenience.
 group :test do
   # Pretty printed test output
