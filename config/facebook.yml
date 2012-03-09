@@ -1,0 +1,13 @@
+# config/facebook.yml
+development:
+ app_id: 314453508612805
+ secret_key: e5182c510cc1742e519409483eaaeb14
+ callback_url: http://localhost:3000/
+test:
+ app_id: 314453508612805
+ secret_key: e5182c510cc1742e519409483eaaeb14
+ callback_url: http://localhost:3000/
+production:
+ app_id: 314453508612805
+ secret_key: e5182c510cc1742e519409483eaaeb14
+ callback_url: http://localhost:3000/
