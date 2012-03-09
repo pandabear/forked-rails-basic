@@ -12,12 +12,12 @@ class RatingsController < ApplicationController
     end
     if rating.save
       if existing_rating
-        flash[:notice] = "Your rating has been updated."
+        flash[:rate_notice] = "Your rating has been updated."
       else
-        flash[:notice] = "Your rating has been saved."
+        flash[:rate_notice] = "Your rating has been saved."
       end
     else
-      flash[:error] = "Your rating was not saved due to invalid data."
+      flash[:rate_notice_error] = "Your rating was not saved due to invalid data."
     end
     respond_to do |format|
       format.html { render "books/show" }

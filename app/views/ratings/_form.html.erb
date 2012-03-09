@@ -1,7 +1,17 @@
 <%= form_for book.ratings.new, url: rate_book_path(book), remote: remote do |f| %>
   <div>
     <%= star_rating_radio_tag(f, :rate, book.overall_rate) %> 
-    &nbsp;(Score <%= book.overall_rate %> from <%= book.ratings.count %> vote(s))<br />
+    &nbsp;(Score <span id="star_score" data-value="<%= book.overall_rate.round  %>"><%= book.overall_rate.round  %></span> stars from <%= book.ratings.count %> vote(s))
+    <% if flash[:rate_notice] %>
+      <span class="alert alert-success">
+        <%= flash[:rate_notice] %>
+      </span>
+    <% elsif flash[:rate_notice_error] %>
+      <span class="alert alert-error">
+        <%= flash[:rate_notice_error] %>
+      </span>
+    <% end %>
+    <br />
     <div id="rating-email-submit">
       <fieldset>
         <div class='control-group'>
@@ -26,4 +36,5 @@
     }
   });
   $('#rating-email-submit').hide();
+  $('#star_score').html($("#star_score").data("value") / 2);
 </script>

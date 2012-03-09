@@ -16,7 +16,7 @@ class RatingsControllerTest < ActionController::TestCase
     assert assigns(:book)
     assert_equal (ratings_count + 1), assigns(:book).ratings.count
     assert_equal @user_rate, assigns(:book).overall_rate
-    assert flash[:notice]
+    assert flash[:rate_notice]
   end
 
   test "same user submitting new rate to same book will store only their latest rate" do
@@ -28,7 +28,7 @@ class RatingsControllerTest < ActionController::TestCase
     assert assigns(:book)
     assert_equal ratings_count, assigns(:book).ratings.count
     assert_equal @user_rate, assigns(:book).overall_rate
-    assert flash[:notice]
+    assert flash[:rate_notice]
   end
   
   test "user not submitting any rate will not be stored" do
@@ -38,7 +38,7 @@ class RatingsControllerTest < ActionController::TestCase
     assert_template "books/show"
     assert assigns(:book)
     assert_equal ratings_count, assigns(:book).ratings.count
-    assert flash[:error]
+    assert flash[:rate_notice_error]
   end
   
   test "user submitting invalid email will not have their rating stored" do
@@ -48,6 +48,6 @@ class RatingsControllerTest < ActionController::TestCase
     assert_template "books/show"
     assert assigns(:book)
     assert_equal ratings_count, assigns(:book).ratings.count
-    assert flash[:error]
+    assert flash[:rate_notice_error]
   end
 end
