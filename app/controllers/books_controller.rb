@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_filter :find_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.all
+    @books = Book.order(:title).all
     respond_to do |format|
       format.html
       format.xml { render xml: @books.to_xml }
