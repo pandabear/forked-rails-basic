@@ -15,6 +15,14 @@ Library::Application.routes.draw do
     end
   end
   
+  match "facebook" => "facebook#index"
+  
+  match "facebook/login" => "facebook#login"
+  
+  match "facebook/logout" => "facebook#logout"
+  
+  match "facebook/callback" => "facebook#callback"
+  
   root :to => 'books#index'
 
 end
