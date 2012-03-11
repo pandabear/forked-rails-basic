@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   before_filter :parse_facebook_cookies, :is_logged_to_facebook
 
   def parse_facebook_cookies
